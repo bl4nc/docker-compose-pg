@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=devmis
+      - POSTGRES_PASSWORD=devmis@1
+      - POSTGRES_DB=bender_v2
+    command: postgres -c 'max_connections=1500'
+    volumes:
+      - ./config/pgdata:/var/lib/postgresql/data
+      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf

@@ -9,7 +9,10 @@ services:
       - POSTGRES_USER=devmis
       - POSTGRES_PASSWORD=devmis@1
       - POSTGRES_DB=bender_v2
+      - PG_SHARED_BUFFERS=4GB
+      - PG_WORK_MEM=128MB
+      - PG_MAINTENANCE_WORK_MEM=4GB
+      - PG_EFFECTIVE_CACHE_SIZE=8GB
     command: postgres -c 'max_connections=1500'
     volumes:
       - ./config/pgdata:/var/lib/postgresql/data
-      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
